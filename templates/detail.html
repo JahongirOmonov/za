@@ -8,8 +8,9 @@
 <h3>{{new.body}}</h3>
 
 <img src="{{ new.img.url }}" width="100%">
-    <div style="padding: 15px 50px; display: flex">
+    <div style="padding: 15px 50px; display: flex; justify-content: space-between">
         <a href="{% url 'news_edit' new.slug %}" ><button style="color: black; background-color: yellow">TAHRIRLASH</button></a>
+        <a href="{% url 'news_delete' new.slug %}" ><button style="color: black; background-color: red">O'CHIRISH</button></a>
     </div>
 <h3>Qo'yilgan kun:  {{new.created_at}}</h3>
     </div>

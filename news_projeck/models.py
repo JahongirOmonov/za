@@ -19,7 +19,7 @@ class News(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    published_at = models.DateTimeField(timezone.now)
+    published_at = models.DateTimeField(default=timezone.now)
     status = models.CharField(max_length=2 , choices=Status.choices , default=Status.Draft)
 
     class Meta:

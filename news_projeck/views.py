@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
 
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView, CreateView
 
 from .forms import ContactForm
 from .models import News, Category
@@ -18,6 +18,26 @@ class EditView(UpdateView):
         context['news'] = News.objects.all()  # 👈 MUHIM
         context['categories'] = Category.objects.all()
         return context
+
+class DeleteNewsView(DeleteView):
+    model = News
+    template_name = 'crud/delete.html'
+    context_object_name = 'yangilik'
+    success_url = reverse_lazy('home_page_view')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        context['news'] = News.objects.all()
+        return context
+
+class CreateNewsView(CreateView):
+    model = News
+    template_name = 'crud/create.html'
+    fields = ('title', 'slug', 'img', 'body', 'category', 'status')
+    success_url = reverse_lazy('home_page_view')
+
+
 
 
 def news_list(request):

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Rostdan ham {{ yangilik.title | truncatewords:4 }}ni o'chirmoqchimisiz? </h2>
+<div style="padding: 15px 0; display: flex; align-items: center; justify-content: space-between;" method="post">
+    <form >{% csrf_token %}
+    <button style="border: none; background-color: black; color: white; padding: 10px 15px;" type="submit">Tasdiqlayman</button>
+</form>
+<a href="{% url 'news_detail' yangilik.slug %}"><button style="border: none; background-color: gold; color: white; padding: 10px 15px;" type="submit">Orqaga</button></a>
+
+</div>
+{% endblock content %}
